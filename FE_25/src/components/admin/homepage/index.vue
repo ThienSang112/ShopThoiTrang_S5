@@ -1,6 +1,7 @@
 <template>
    <div class="container">
       <div class="row">
+         <!-- CỘT TRÁI: KHUNG CHAT AI (Đã sửa lại cấu trúc để tránh lỗi CSS) -->
          <div class="col-lg-4 mb-3 mb-lg-0">
             <div id="ai-chat-widget">
 
@@ -70,7 +71,7 @@
 
          <!-- CỘT PHẢI: CAROUSEL (GIỮ NGUYÊN) -->
          <div class="col-lg-8">
-            <div id="carouselExampleDark" class="carousel carousel-dark slide rounded-3 overflow-hidden shadow-sm">
+            <div id="carouselExampleDark" ref="myCarousel" class="carousel carousel-dark slide rounded-3 overflow-hidden shadow-sm" data-bs-ride="carousel">
                <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"
                      class="active"></button>
@@ -138,7 +139,7 @@
    <!-- FOOTER PAGE -->
    <div class="row">
       <footer style="background-color:whitesmoke; padding: 40px; color: black;" class="mt-4">
-         <div class="container">
+         <div class="container ">
             <div class="row">
                <div class="col-lg-4 col-md-6 mb-4">
                   <h4>ShopS5</h4>
@@ -186,7 +187,7 @@
          <hr class="my-4">
          <div class="row pb-4 align-items-center">
             <div class="col-md-6 text-center text-md-start">
-               @<strong>SHOPS5</strong>. Đã đăng ký Bản quyền. Thiết kế bởi <strong>Thanh Sáng</strong>
+               @<strong>SHOPS5</strong>. Đã đăng ký Bản quyền. Thiết kế bởi <strong>Nhóm 5</strong>
             </div>
             <div class="col-md-6 text-center text-md-end mt-2">
                <i class="fab fa-cc-visa fs-3 mx-1 text-primary"></i>
@@ -208,18 +209,53 @@ export default {
          messages: [
             {
                sender: 'bot',
-               text: 'Chào bạn! Mình là AI tư vấn. <br>Bạn cần tìm đồ đi đâu, hoặc nhập <b>chiều cao/cân nặng</b> để mình chọn size nhé?',
+               text: 'Chào bạn! Mình là AI tư vấn.<br>Bạn muốn tìm đồ đi <b>du lịch</b>, đồ <b>mùa đông</b>, hay tư vấn <b>size</b> nào?',
                time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
             }
          ],
          products: [
-            { id: 2, ten_san_pham: "ÁO SƠ MI NAM", mo_ta: "Vải cotton thoáng mát", gia_ban: 350000, danh_muc: "ao_so_mi", hinh_anh: "https://bizweb.dktcdn.net/100/345/548/products/z4975375786651-c8bf932e5913c28da3b427a4fa35d4a1.jpg?v=1702574676273" },
+            { id: 2, ten_san_pham: "ÁO SƠ MI NAM", mo_ta: "Vải cotton thoáng mát", gia_ban: 350000, danh_muc: "ao_so_mi", hinh_anh: "https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?q=80&w=1965&auto=format&fit=crop" },
             { id: 3, ten_san_pham: "QUẦN JEANS", mo_ta: "Phong cách năng động", gia_ban: 550000, danh_muc: "quan_jeans", hinh_anh: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1887&auto=format&fit=crop" },
             { id: 4, ten_san_pham: "ÁO VEST", mo_ta: "Lịch lãm sang trọng", gia_ban: 1500000, danh_muc: "vest", hinh_anh: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1780&auto=format&fit=crop" },
-            { id: 5, ten_san_pham: "ÁO THUN BASIC", mo_ta: "Đơn giản, dễ phối đồ", gia_ban: 150000, danh_muc: "ao_thun", hinh_anh: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1780&auto=format&fit=crop" }
+            { id: 5, ten_san_pham: "ÁO THUN BASIC", mo_ta: "Đơn giản, dễ phối đồ", gia_ban: 150000, danh_muc: "ao_thun", hinh_anh: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1780&auto=format&fit=crop" },
+            { id: 6, ten_san_pham: "ÁO KHOÁC BOMBER", mo_ta: "Chất dù 2 lớp, ấm áp", gia_ban: 450000, danh_muc: "ao_khoac", hinh_anh: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop" },
+            { id: 7, ten_san_pham: "GIÀY SNEAKER", mo_ta: "Trắng basic, êm chân", gia_ban: 650000, danh_muc: "giay", hinh_anh: "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop" },
+            { id: 8, ten_san_pham: "QUẦN SHORT KAKI", mo_ta: "Mặc đi chơi, thoải mái", gia_ban: 250000, danh_muc: "quan_short", hinh_anh: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=2070&auto=format&fit=crop" },
+            { id: 9, ten_san_pham: "ÁO POLO NAM", mo_ta: "Lịch sự, trẻ trung", gia_ban: 280000, danh_muc: "ao_thun", hinh_anh: "https://images.unsplash.com/photo-1626557981101-aae6f84aa6ff?q=80&w=2070&auto=format&fit=crop" },
+            { id: 10, ten_san_pham: "QUẦN JOGGER KAKI", mo_ta: "Bo gấu, phong cách thể thao", gia_ban: 320000, danh_muc: "quan_dai", hinh_anh: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?q=80&w=1889&auto=format&fit=crop" },
+            { id: 11, ten_san_pham: "BALO LAPTOP", mo_ta: "Chống nước, ngăn chống sốc", gia_ban: 550000, danh_muc: "phu_kien", hinh_anh: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=1887&auto=format&fit=crop" },
+            { id: 12, ten_san_pham: "NÓN KẾT THỜI TRANG", mo_ta: "Vải kaki, logo thêu nổi", gia_ban: 120000, danh_muc: "phu_kien", hinh_anh: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1935&auto=format&fit=crop" },
+            { id: 13, ten_san_pham: "KÍNH MÁT AVIATOR", mo_ta: "Chống tia UV, gọng kim loại", gia_ban: 350000, danh_muc: "phu_kien", hinh_anh: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=2080&auto=format&fit=crop" },
+            { id: 14, ten_san_pham: "THẮT LƯNG DA BÒ", mo_ta: "Da thật 100%, mặt khóa tự động", gia_ban: 450000, danh_muc: "phu_kien", hinh_anh: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=2070&auto=format&fit=crop" },
+            { id: 15, ten_san_pham: "ĐỒNG HỒ THỂ THAO", mo_ta: "Chống nước, dây cao su bền", gia_ban: 950000, danh_muc: "phu_kien", hinh_anh: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?q=80&w=1999&auto=format&fit=crop" },
+            { id: 16, ten_san_pham: "ÁO HOODIE FORM RỘNG", mo_ta: "Phong cách street style", gia_ban: 420000, danh_muc: "ao_khoac", hinh_anh: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1887&auto=format&fit=crop" },
+            { id: 17, ten_san_pham: "ÁO BLAZER HÀN QUỐC", mo_ta: "Khoác nhẹ, trẻ trung", gia_ban: 850000, danh_muc: "vest", hinh_anh: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" },
+            { id: 18, ten_san_pham: "GIÀY TÂY DA BÓNG", mo_ta: "Da bò thật, đế cao su đúc", gia_ban: 1200000, danh_muc: "giay", hinh_anh: "https://images.unsplash.com/photo-1614252369475-531eba835eb1?q=80&w=2070&auto=format&fit=crop" },
+            { id: 19, ten_san_pham: "QUẦN TÂY CÔNG SỞ", mo_ta: "Vải âu cao cấp, không nhăn", gia_ban: 450000, danh_muc: "quan_dai", hinh_anh: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1897&auto=format&fit=crop" },
+            { id: 20, ten_san_pham: "TÚI ĐEO CHÉO", mo_ta: "Vải canvas, nhỏ gọn", gia_ban: 190000, danh_muc: "phu_kien", hinh_anh: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=2069&auto=format&fit=crop" }
          ]
       };
    },
+   mounted() {
+        const carouselEl = document.getElementById('carouselExampleDark');
+        if (carouselEl) {
+            try {
+                const carousel = new bootstrap.Carousel(carouselEl, {
+                    interval: 3000,
+                    ride: 'carousel'
+                });
+                carousel.cycle();
+            } catch (e) {
+                if (window.bootstrap) {
+                    const carousel = new window.bootstrap.Carousel(carouselEl, {
+                        interval: 3000,
+                        ride: 'carousel'
+                    });
+                    carousel.cycle();
+                }
+            }
+        }
+    },
    methods: {
       formatPrice(value) {
          return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
@@ -246,38 +282,106 @@ export default {
             const lowerText = text.toLowerCase();
             const weightMatch = lowerText.match(/(\d+)\s*kg/);
 
+            // --- 1. LOGIC TƯ VẤN CÂN NẶNG ---
             if (weightMatch) {
                const weight = parseInt(weightMatch[1]);
                let size = "";
-
-               // Cập nhật Logic Size (Thêm XL, XXL)
                if (weight < 53) size = "S";
                else if (weight >= 53 && weight < 63) size = "M";
                else if (weight >= 63 && weight < 73) size = "L";
                else if (weight >= 73 && weight < 83) size = "XL";
                else size = "XXL";
 
-               replyText = `Với cân nặng <b>${weight}kg</b>, AI khuyên bạn nên chọn size <b>${size}</b> để mặc vừa vặn nhất nhé!`;
+               replyText = `Với cân nặng <b>${weight}kg</b>, AI khuyên bạn nên chọn size <b>${size}</b> nhé!`;
+            }
 
-               // Gợi ý sản phẩm phù hợp (Bao gồm áo thun)
-               if (lowerText.includes("áo")) {
-                  suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_so_mi' || p.danh_muc === 'vest' || p.danh_muc === 'ao_thun');
-                  replyText += "<br>Mình gửi bạn tham khảo các mẫu áo (Sơ mi, Vest, Thun) đang hot:";
+            // --- 2. LOGIC TƯ VẤN NGỮ CẢNH (MỚI THÊM) ---
+            // Ưu tiên check ngữ cảnh trước khi check sản phẩm cụ thể
+            else if (lowerText.includes("du lịch") || lowerText.includes("biển") || lowerText.includes("đi chơi")) {
+               replyText = "Đi du lịch thì ưu tiên sự thoải mái, năng động. Bạn có thể tham khảo combo <b>Áo thun + Quần Short + Phụ kiện</b> này nhé:";
+               // Lấy ngẫu nhiên 1 áo thun, 1 quần short, 1 phụ kiện
+               suggestedProducts = [
+                  this.products.find(p => p.danh_muc === 'ao_thun'),
+                  this.products.find(p => p.danh_muc === 'quan_short'),
+                  this.products.find(p => p.danh_muc === 'phu_kien' && (p.ten_san_pham.includes('NÓN') || p.ten_san_pham.includes('KÍNH')))
+               ].filter(Boolean);
+            }
+            else if (lowerText.includes("đông") || lowerText.includes("lạnh") || lowerText.includes("ấm")) {
+               replyText = "Trời lạnh thì cứ <b>Hoodie</b> hoặc <b>Bomber</b> phối với <b>Quần Jeans</b> là chuẩn bài, vừa ấm vừa ngầu:";
+               suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_khoac' || p.danh_muc === 'quan_jeans');
+            }
+            else if (lowerText.includes("hè") || lowerText.includes("nóng") || lowerText.includes("mát")) {
+               replyText = "Mùa hè nóng nực thì cứ <b>Áo thun/Polo</b> và <b>Quần Short</b> là chân ái ạ:";
+               suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_thun' || p.danh_muc === 'quan_short');
+            }
+            else if (lowerText.includes("công sở") || lowerText.includes("đi làm") || lowerText.includes("văn phòng")) {
+               replyText = "Đi làm cần sự chỉn chu, mình gợi ý set <b>Sơ mi + Quần Tây</b> hoặc khoác thêm <b>Blazer</b> nhé:";
+               suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_so_mi' || p.danh_muc === 'quan_dai' || p.danh_muc === 'vest');
+            }
+            else if (lowerText.includes("tiệc") || lowerText.includes("cưới") || lowerText.includes("sang trọng")) {
+               replyText = "Đi tiệc thì không thể thiếu bộ <b>Vest</b> lịch lãm hoặc <b>Giày Tây</b> sang trọng:";
+               suggestedProducts = this.products.filter(p => p.danh_muc === 'vest' || (p.danh_muc === 'giay' && p.ten_san_pham.includes('TÂY')));
+            }
+            
+            // --- 3. LOGIC TÌM SẢN PHẨM CỤ THỂ (Như cũ) ---
+            else if (lowerText.includes("áo")) {
+               if (lowerText.includes("sơ mi")) {
+                  replyText = "Bên mình có mẫu Áo Sơ Mi rất đẹp cho công sở này:";
+                  suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_so_mi');
+               } else if (lowerText.includes("thun") || lowerText.includes("phông") || lowerText.includes("polo")) {
+                  replyText = "Áo thun và Polo basic, dễ phối đồ:";
+                  suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_thun');
+               } else if (lowerText.includes("khoác") || lowerText.includes("hoodie") || lowerText.includes("bomber")) {
+                  replyText = "Các mẫu áo khoác hot trend đây ạ:";
+                  suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_khoac');
+               } else if (lowerText.includes("vest") || lowerText.includes("blazer")) {
+                  replyText = "Vest và Blazer lịch lãm cho các quý ông:";
+                  suggestedProducts = this.products.filter(p => p.danh_muc === 'vest');
+               } else {
+                  replyText = "Shop có nhiều loại áo lắm ạ: Sơ mi, Thun, Polo, Vest... Bạn muốn xem loại nào?";
+                  suggestedProducts = this.products.filter(p => p.danh_muc.includes('ao')).slice(0, 4);
                }
             }
-            else if (lowerText.includes("sơ mi")) {
-               replyText = "Bên mình có mẫu Áo Sơ Mi rất đẹp cho công sở này:";
-               suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_so_mi');
-            } else if (lowerText.includes("quần") || lowerText.includes("jeans")) {
-               replyText = "Bạn xem thử mẫu quần Jeans này nhé:";
-               suggestedProducts = this.products.filter(p => p.danh_muc === 'quan_jeans');
-            } else if (lowerText.includes("thun") || lowerText.includes("phông")) {
-               replyText = "Mẫu áo thun Basic này đang bán rất chạy, mặc thoải mái lắm ạ:";
-               suggestedProducts = this.products.filter(p => p.danh_muc === 'ao_thun');
-            } else if (lowerText.includes("size") || lowerText.includes("tư vấn")) {
-               replyText = "Bạn cho mình xin chiều cao và cân nặng (ví dụ: 1m70, 75kg) để mình tính size chuẩn cho bạn nha.";
-            } else {
-               replyText = "Mình chưa hiểu rõ lắm. Bạn cần tìm <b>áo sơ mi</b>, <b>áo thun</b>, <b>quần jeans</b> hay cần <b>tư vấn size</b>?";
+            else if (lowerText.includes("quần")) {
+                if (lowerText.includes("jeans") || lowerText.includes("bò")) {
+                   replyText = "Mẫu quần Jeans form chuẩn:";
+                   suggestedProducts = this.products.filter(p => p.danh_muc === 'quan_jeans');
+                } else if (lowerText.includes("short") || lowerText.includes("đùi") || lowerText.includes("ngắn")) {
+                   replyText = "Quần Short mặc đi chơi cho mát:";
+                   suggestedProducts = this.products.filter(p => p.danh_muc === 'quan_short');
+                } else if (lowerText.includes("tây") || lowerText.includes("âu") || lowerText.includes("jogger")) {
+                   replyText = "Các mẫu quần dài (Tây, Jogger) đây ạ:";
+                   suggestedProducts = this.products.filter(p => p.danh_muc === 'quan_dai');
+                } else {
+                   replyText = "Bạn tìm quần dài, quần jeans hay quần short ạ? Mình có đủ cả:";
+                   suggestedProducts = this.products.filter(p => p.danh_muc.includes('quan')).slice(0, 4);
+                }
+            }
+            else if (lowerText.includes("mũ") || lowerText.includes("nón")) {
+               replyText = "Nón kết thời trang, chất liệu Kaki xịn xò, đội là ngầu:";
+               suggestedProducts = this.products.filter(p => p.danh_muc === 'phu_kien' && p.ten_san_pham.toLowerCase().includes("nón"));
+            }
+            else if (lowerText.includes("đồng hồ")) {
+               replyText = "Mẫu Đồng hồ thể thao này đang rất hot, chống nước cực tốt:";
+               suggestedProducts = this.products.filter(p => p.danh_muc === 'phu_kien' && p.ten_san_pham.toLowerCase().includes("đồng hồ"));
+            }
+            else if (lowerText.includes("giày") || lowerText.includes("sneaker")) {
+               replyText = "Giày Sneaker và Giày Tây cho bạn lựa chọn:";
+               suggestedProducts = this.products.filter(p => p.danh_muc === 'giay');
+            }
+            else if (lowerText.includes("phụ kiện") || lowerText.includes("balo") || lowerText.includes("kính") || lowerText.includes("thắt lưng")) {
+               replyText = "Các món phụ kiện để hoàn thiện outfit:";
+               suggestedProducts = this.products.filter(p => p.danh_muc === 'phu_kien');
+            }
+
+            else if (lowerText.includes("ship") || lowerText.includes("giao")) {
+               replyText = "Phí ship đồng giá 30k toàn quốc. <b>Freeship</b> đơn từ 500k ạ!";
+            }
+            else if (lowerText.includes("địa chỉ") || lowerText.includes("shop")) {
+               replyText = "Shop ở <b>01 Hà Huy Tập, Đà Nẵng</b>. Ghé chơi nhé!";
+            }
+            else {
+               replyText = "Mình chưa hiểu rõ lắm. Bạn thử hỏi: 'đi du lịch mặc gì', 'áo thun', 'quần jeans' hoặc 'tư vấn size 60kg' xem sao?";
             }
 
             this.messages.push({ sender: 'bot', text: replyText, products: suggestedProducts, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
@@ -288,9 +392,7 @@ export default {
    }
 }
 </script>
-
 <style scoped>
-
 #ai-chat-widget {
    width: 100%;
    height: 500px;
@@ -308,14 +410,15 @@ export default {
 #ai-chat-widget .chat-widget-header {
    height: 60px;
    min-height: 60px;
-   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-   color: white;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+   color: white !important;
    display: flex;
    align-items: center;
    justify-content: space-between;
    padding: 0 15px;
    width: 100%;
    box-sizing: border-box;
+   flex-shrink: 0;
 }
 
 #ai-chat-widget .header-content {
@@ -354,16 +457,19 @@ export default {
    background-color: #f5f7fb;
    padding: 15px;
    overflow-y: auto;
+   overflow-x: hidden;
    display: flex;
    flex-direction: column;
-   gap: 15px;
+   gap: 15px; 
+   min-height: 0;
 }
 
 /* Chat Rows */
 #ai-chat-widget .chat-row {
    display: flex;
    flex-direction: column;
-   max-width: 85%;
+   max-width: 92%; 
+   margin-bottom: 0; /* Đã dùng gap ở trên */
 }
 
 #ai-chat-widget .row-bot {
@@ -377,12 +483,14 @@ export default {
 
 /* Chat Bubbles */
 #ai-chat-widget .chat-bubble {
-   padding: 10px 14px;
+   padding: 12px 16px;
    border-radius: 12px;
    font-size: 14px;
    line-height: 1.5;
    word-wrap: break-word;
    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+   width: 100%;
+   box-sizing: border-box;
 }
 
 #ai-chat-widget .row-bot .chat-bubble {
@@ -403,48 +511,73 @@ export default {
    margin-top: 4px;
 }
 
-/* Product List */
+/* Product List Container */
 #ai-chat-widget .product-list {
    margin-top: 10px;
    padding-top: 8px;
    border-top: 1px solid #eee;
+   width: 100%;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   max-height: 250px;
+   overflow-y: auto;
 }
 
+/* Từng sản phẩm */
 #ai-chat-widget .product-item {
    display: flex;
    align-items: center;
    background: #f8f9fa;
-   padding: 6px;
-   margin-top: 5px;
-   border-radius: 6px;
+   padding: 10px;
+   border-radius: 8px;
    border: 1px solid #eee;
+   width: 100%;
+   box-sizing: border-box;
+   min-height: 60px;
+   margin-top: 0; 
+}
+
+#ai-chat-widget .product-item:hover {
+   background: #e9ecef;
 }
 
 #ai-chat-widget .product-item img {
-   width: 35px;
-   height: 35px;
+   width: 50px;
+   height: 50px;
    object-fit: cover;
-   border-radius: 4px;
-   margin-right: 8px;
+   border-radius: 6px;
+   margin-right: 12px;
+   flex-shrink: 0;
 }
 
+#ai-chat-widget .product-info {
+   flex: 1;
+   min-width: 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+/* Tên sản phẩm: Cho phép xuống dòng */
 #ai-chat-widget .product-name {
-   font-size: 12px;
+   font-size: 13px;
    font-weight: 600;
    color: #333;
-   white-space: nowrap;
-   overflow: hidden;
-   text-overflow: ellipsis;
-   max-width: 130px;
+   margin-bottom: 4px;
+   /* Cho phép xuống dòng thoải mái, không dùng line-clamp */
+   white-space: normal;
+   line-height: 1.3;
 }
 
 #ai-chat-widget .product-price {
-   font-size: 11px;
+   font-size: 13px;
    color: #dc3545;
    font-weight: bold;
 }
 
-/* FOOTER - INPUT AREA */
+/* FOOTER */
 #ai-chat-widget .chat-widget-footer {
    padding: 10px;
    background-color: white;
@@ -452,6 +585,7 @@ export default {
    min-height: 60px;
    box-sizing: border-box;
    width: 100%;
+   flex-shrink: 0;
 }
 
 #ai-chat-widget .input-container {
@@ -466,11 +600,8 @@ export default {
 
 #ai-chat-widget .input-container input {
    flex: 1;
-   /* Input tự co giãn */
-   width: auto;
-   /* Fix lỗi input bị đè */
+   width: auto !important;
    min-width: 0;
-   /* Fix lỗi flexbox */
    border: none;
    background: transparent;
    padding: 8px;
