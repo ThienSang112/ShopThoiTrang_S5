@@ -1,0 +1,39 @@
+--- Laravel (Backend) ---
+
+/be_25/vendor/
+/be_25/node_modules/
+/be_25/.env
+/be_25/storage/.key
+/be_25/public/hot
+/be_25/public/storage
+/be_25/storage/debugbar
+/be_25/storage/framework/cache/data/
+/be_25/storage/framework/sessions/*
+/be_25/storage/framework/testing/*
+/be_25/storage/framework/views/*
+/be_25/storage/logs/*
+
+--- VueJS (Frontend) ---
+
+/FE_25/node_modules/
+/FE_25/dist/
+/FE_25/.env.local
+/FE_25/.env..local
+/FE_25/npm-debug.log
+/FE_25/yarn-debug.log*
+/FE_25/yarn-error.log*
+
+--- System & IDE ---
+
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.ntvs
+*.njsproj
+*.sln
+*.sw?
+
+--- Docker (nếu có mount data ra ngoài) ---
+
+mysql_data/
